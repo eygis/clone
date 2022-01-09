@@ -107,7 +107,7 @@ body {
   right: 4em;
   opacity: 0;
   list-style-type: none;
-  z-index: -100;
+  z-index: -1;
 }
 
 #world2:hover {
@@ -189,7 +189,7 @@ body {
   left: 1.5em;
   opacity: 0;
   list-style-type: none;
-  z-index: -100;
+  z-index: -1;
   font-family: "Nunito Sans", sans-serif;
   font-weight: bold;
 }
