@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css'
 import cross from '/src/pictures/cross.png'
 import bmw from '/src/pictures/bmwLogo150.jpg'
@@ -11,10 +11,15 @@ import kaigan from '/src/pictures/kaigan.jpg'
 
 const App = () => {
     
-    let accordionFunction = (input) => {
-        let open = document.getElementsByClassName('openTab');
-        open[0].classList.remove('openTab')
-        document.getElementById(input).classList.add('openTab');
+    const [previousTab, setTab] = useState('pictureText1')
+
+    let accordionFunction = (picture, pictureText) => {
+        document.getElementsByClassName('openTab')[0].classList.remove('openTab');
+        document.getElementById(picture).classList.add('openTab');
+        setTimeout(()=>{document.getElementById(pictureText).style.bottom='-0.5em'}, 275);
+        if (pictureText==previousTab) return
+        document.getElementById(previousTab).style.bottom='-5em';
+        setTab(pictureText);
     }
 
     return (
@@ -92,14 +97,14 @@ const App = () => {
              </nav>
              <div id='newsAccordion'>
                  <ul id='accordionList'>
-                     <li className='accordionItem accordionPicture openTab' id='picture1'><span id='pictureText'>The Festival de Bui has signed a memorandum of understanding with Earth Telephones and the media company Bruh</span><img className='picture' src={phone} /></li>
-                     <li className='accordionItem' onClick={()=>accordionFunction('picture1')}><span className='accordionNumber'>1</span><span className='itemText'>The Festival de Bui has signed a memorandum of understanding with Earth Telephones and the media company Bruh</span></li>
-                     <li className='accordionItem accordionPicture' id='picture2'><span id='pictureText'>The 75th edition will take place on April 3rd, 2022. Registration of films is closed!</span><img className='picture' src={film} /></li>
-                     <li className='accordionItem' onClick={()=>accordionFunction('picture2')}><span className='accordionNumber'>2</span>The 75th edition will take place on April 3rd, 2022. Registration of films is closed!</li>
-                     <li className='accordionItem accordionPicture' id='picture3'><span id='pictureText'>The Bui Films en route for the 2022 Knopes</span><img className='picture' src={buifilms} /></li>
-                     <li className='accordionItem' onClick={()=>accordionFunction('picture3')}><span className='accordionNumber'>3</span>The Bui Films en route for the 2022 Knopes</li>
-                     <li className='accordionItem accordionPicture' id='picture4'><span id='pictureText'>"The Belmonts are vampires!" Terry Fromage's sudden and unfounded claim about the Family</span><img className='picture' src={kaigan} /></li>
-                     <li className='accordionItem' onClick={()=>accordionFunction('picture4')}><span className='accordionNumber'>4</span>"The Belmonts are vampires!" Terry Fromage's sudden and unfounded claim about the Family</li>
+                     <li className='accordionItem accordionPicture openTab' id='picture1'><span className='pictureText slideText' id='pictureText1'>The Festival de Bui has signed a memorandum of understanding with Earth Telephones and the media company Bruh</span><img className='picture' src={phone} /></li>
+                     <li className='accordionItem' onClick={()=>accordionFunction('picture1', 'pictureText1')}><span className='accordionNumber'>1</span><span className='itemText'>The Festival de Bui has signed a memorandum of understanding with Earth Telephones and the media company Bruh</span></li>
+                     <li className='accordionItem accordionPicture' id='picture2'><span className='pictureText' id='pictureText2'>The 75th edition will take place on April 3rd, 2022. Registration of films is closed!</span><img className='picture' src={film} /></li>
+                     <li className='accordionItem' onClick={()=>accordionFunction('picture2', 'pictureText2')}><span className='accordionNumber'>2</span>The 75th edition will take place on April 3rd, 2022. Registration of films is closed!</li>
+                     <li className='accordionItem accordionPicture' id='picture3'><span className='pictureText' id='pictureText3'>The Bui Films en route for the 2022 Knopes</span><img className='picture' src={buifilms} /></li>
+                     <li className='accordionItem' onClick={()=>accordionFunction('picture3', 'pictureText3')}><span className='accordionNumber'>3</span>The Bui Films en route for the 2022 Knopes</li>
+                     <li className='accordionItem accordionPicture' id='picture4'><span className='pictureText' id='pictureText4'>"The Belmonts are vampires!" Terry Fromage's sudden and unfounded claim about the Family</span><img className='picture' src={kaigan} /></li>
+                     <li className='accordionItem' onClick={()=>accordionFunction('picture4', 'pictureText4')}><span className='accordionNumber'>4</span>"The Belmonts are vampires!" Terry Fromage's sudden and unfounded claim about the Family</li>
                  </ul>
              </div>
          </div>
