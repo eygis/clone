@@ -8,6 +8,7 @@ import phone from '/src/pictures/phone.jpg'
 import film from '/src/pictures/film.jpg'
 import buifilms from '/src/pictures/buifilms.jpg'
 import kaigan from '/src/pictures/kaigan.jpg'
+import sad from '/src/pictures/sad.jpg'
 
 const App = () => {
     
@@ -26,7 +27,7 @@ const App = () => {
     useEffect(() => { 
     const images = document.querySelectorAll('.showOnScroll');
     const options = {
-        threshold: .9
+        threshold: .75
     }
     const observer = new IntersectionObserver(entries => {
         console.log(entries)
@@ -42,6 +43,13 @@ const App = () => {
     observer.observe(image);
     });
 });
+
+    let videoClick = () => {
+        let video = document.getElementById('video');
+        document.getElementById('seeVideo').style.display = 'none'
+        video.play();
+        video.controls = true;
+    }
     
     return (
         <div id='wrapper'>
@@ -129,8 +137,8 @@ const App = () => {
                  </ul>
              </div>
          </div>
-            <p id='mainHeader'>ALL THE LATEST NEWS</p>
-            <div id='mainArea'>
+            <p id='articleHeader'>ALL THE LATEST NEWS</p>
+            <div id='articleArea'>
             <div className='article showOnScroll' id='article1'>
             <div className='articlePictureDiv'><img className='articlePicture' src={phone} /></div>
             <p className='articleText classification'><span className='goldType'>OFFICIAL RELEASE</span><span className='date'>12.17.2021</span></p>
@@ -156,7 +164,27 @@ const App = () => {
             <p className='articleText'>While the relationship between Fromage and the Belmont family has always been tense, his latest claim appears to be a bizarre and baseless claim.</p>
             </div>
             <p id='seeMore'>SEE + ARTICLES</p>
-         </div>
+            </div>
+            <p id='videoHeader'>FEATURED VIDEO</p>
+            <div id='videoArea'>
+                <div className='showOnScroll' id='videoTile'>
+                <video id='video' poster={sad} playsinline="" controlslist="nodownload" disablepictureinpicture="true"><source src="https://cdn.videvo.net/videvo_files/video/free/2013-07/large_watermarked/HS045_preview.mp4" type="video/mp4" /></video>
+                    <a id='seeVideo' onClick={()=>videoClick()}><span className='fas fa-play'></span><span id='seeVideoText'>SEE THE VIDÉO</span></a>
+                    <div id='videoTextArea'>
+                    <div id='videoTextAreaLeft'>
+                        74e Festival de Bui Worst-of
+                    </div>
+                    <div id='videoTextAreaRight'>
+                        <span id='rightGold'>
+                            74TH EDITION
+                        </span>
+                        <span id='rightDate'>
+                            7.16.2021
+                        </span>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

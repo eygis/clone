@@ -306,13 +306,14 @@ body {
   bottom: -1em;
 }
 
-#mainArea {
+#articleArea {
   width: 90%;
   margin: 0 auto 0 auto;
   position: relative;
+  height: 92em;
 }
 
-#mainHeader {
+#articleHeader {
   font-size: 2.5em;
   padding-left: 2.5em;
   font-weight: bold;
@@ -331,6 +332,7 @@ body {
 
 .isVisible {
   opacity: 1;
+  transform: translate(0, 1em);
 }
 
 .articleText {
@@ -364,16 +366,16 @@ body {
 
 #article2 {
   right: 0;
-  top: 18em;
+  top: 17em;
 }
 
 #article3 {
-  top: 36em;
+  top: 35em;
 }
 
 #article4 {
   right: 0;
-  top: 50em;
+  top: 49em;
 }
 
 .goldType {
@@ -406,7 +408,7 @@ body {
   top: 85em;
   border: 1px solid black;
   padding: 0.5em;
-  margin: 0.5em;
+  margin: 0.5em 0.5em 0.5em 3.5em;
   transition: 0.5s;
 }
 
@@ -414,4 +416,65 @@ body {
   color: white;
   background-color: black;
   border: 1px solid #c8a461;
+}
+
+#videoArea {
+  width: 90%;
+  margin: 0 auto 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+#videoHeader {
+  font-size: 2.5em;
+  padding-left: 3.1em;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+#video {
+  width: 70%;
+}
+
+#videoTextArea {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 1em auto 1em auto;
+}
+
+#videoTextAreaLeft {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 1.4em;
+}
+
+#rightGold {
+  color: #c8a461;
+  margin-right: 1em;
+}
+
+#seeVideo {
+  position: absolute;
+  top: 40em;
+  right: 15em;
+  border: 1px solid rgb(124, 120, 120);
+  padding: 0.5em;
+  margin: 0.5em 0.5em 0.5em 3.5em;
+  transition: 0.5s;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8em;
+  background-color: #141414;
+}
+
+#seeVideo:hover {
+  color: #c8a461;
+  background-color: black;
+  border: 1px solid #c8a461;
+}
+
+#seeVideoText {
+  margin-left: 1em;
 }
