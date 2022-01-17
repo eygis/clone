@@ -9,6 +9,10 @@ import film from '/src/pictures/film.jpg'
 import buifilms from '/src/pictures/buifilms.jpg'
 import kaigan from '/src/pictures/kaigan.jpg'
 import sad from '/src/pictures/sad.jpg'
+import computer from '/src/pictures/computer.jpg'
+import uke from '/src/pictures/uke.jpg'
+import forest from '/src/pictures/forest.jpg'
+import mushrooms from '/src/pictures/mushrooms.jpg'
 
 const App = () => {
     
@@ -30,11 +34,10 @@ const App = () => {
         threshold: .75
     }
     const observer = new IntersectionObserver(entries => {
-        console.log(entries)
         entries.forEach(entry => {
             if (entry.isIntersecting) {
             entry.target.classList.add('isVisible')
-            IntersectionObserver.unobserve(entry);
+            //IntersectionObserver.unobserve(entry);
             }
         })
     }, options)
@@ -44,11 +47,11 @@ const App = () => {
     });
 });
 
-    let videoClick = () => {
-        let video = document.getElementById('video');
-        document.getElementById('seeVideo').style.display = 'none'
-        video.play();
-        video.controls = true;
+    let videoClick = (video, button) => {
+        let selectedVideo = document.getElementById(video);
+        document.getElementById(button).style.display = 'none'
+        selectedVideo.play();
+        selectedVideo.controls = true;
     }
     
     return (
@@ -165,16 +168,16 @@ const App = () => {
             </div>
             <p id='seeMore'>SEE + ARTICLES</p>
             </div>
-            <p id='videoHeader'>FEATURED VIDEO</p>
-            <div id='videoArea'>
-                <div className='showOnScroll' id='videoTile'>
-                <video id='video' poster={sad} playsinline="" controlslist="nodownload" disablepictureinpicture="true"><source src="https://cdn.videvo.net/videvo_files/video/free/2013-07/large_watermarked/HS045_preview.mp4" type="video/mp4" /></video>
-                    <a id='seeVideo' onClick={()=>videoClick()}><span className='fas fa-play'></span><span id='seeVideoText'>SEE THE VIDÉO</span></a>
-                    <div id='videoTextArea'>
-                    <div id='videoTextAreaLeft'>
+            <p id='featuredVideoHeader'>FEATURED VIDEO</p>
+            <div id='featuredVideoArea'>
+                <div className='showOnScroll' id='featuredVideoTile'>
+                <video id='featuredVideo' poster={sad} playsInline="" controlsList="nodownload" disablePictureInPicture={true}><source src="https://cdn.videvo.net/videvo_files/video/free/2013-07/large_watermarked/HS045_preview.mp4" type="video/mp4" /></video>
+                    <a id='featuredVideoButton' className='seeVideo' onClick={()=>videoClick('featuredVideo', 'featuredVideoButton')}><span className='fas fa-play'></span><span className='seeVideoText'>SEE THE VIDÉO</span></a>
+                    <div id='featuredVideoTextArea'>
+                    <div id='featuredVideoTextAreaLeft'>
                         74e Festival de Bui Worst-of
                     </div>
-                    <div id='videoTextAreaRight'>
+                    <div id='featuredVideoTextAreaRight'>
                         <span id='rightGold'>
                             74TH EDITION
                         </span>
@@ -184,6 +187,21 @@ const App = () => {
                     </div>
                     </div>
                 </div>
+            </div>
+
+            <p id='selectionHeader'>HIGHLIGHT ON THE OFFICIAL SELECTION</p>
+            <div id='selectionArea'>
+            <div className='selection' id='selection1'>
+                <div className='selectionDetails'>
+                    <span className='selectionReleaseDate'>RELEASED ON : 01.18.2022</span>
+                    <span className='selectionMovieTitle'>HAL</span>
+                    <span className='selectionDirector'>Ting FOO, Leo POTT</span>
+                </div>
+                <div className='selectionVideoDiv'>
+                <video id='selectionVideo1' className='selectionVideo' poster={computer} playsInline="" controlsList="nodownload" disablePictureInPicture={true}><source src="https://cdn.videvo.net/videvo_files/video/free/2020-05/large_watermarked/3d_ocean_1590675653_preview.mp4" type="video/mp4" /></video>
+                <a id='selectionVideoButton1' className='seeVideo' onClick={()=>videoClick('selectionVideo1', 'selectionVideoButton1')}><span className='fas fa-play'></span><span className='seeVideoText'>SEE THE VIDÉO</span></a>
+                </div>
+            </div>
             </div>
         </div>
     );

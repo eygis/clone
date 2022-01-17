@@ -418,32 +418,32 @@ body {
   border: 1px solid #c8a461;
 }
 
-#videoArea {
+#featuredVideoArea {
   width: 90%;
   margin: 0 auto 0 auto;
   position: relative;
   text-align: center;
 }
 
-#videoHeader {
+#featuredVideoHeader {
   font-size: 2.5em;
   padding-left: 3.1em;
   font-weight: bold;
   margin-bottom: 0;
 }
 
-#video {
+#featuredVideo {
   width: 70%;
 }
 
-#videoTextArea {
+#featuredVideoTextArea {
   display: flex;
   justify-content: space-between;
   width: 90%;
   margin: 1em auto 1em auto;
 }
 
-#videoTextAreaLeft {
+#featuredVideoTextAreaLeft {
   font-family: "Playfair Display", serif;
   font-weight: bold;
   display: inline-block;
@@ -455,10 +455,13 @@ body {
   margin-right: 1em;
 }
 
-#seeVideo {
-  position: absolute;
+#featuredVideoButton {
   top: 40em;
   right: 15em;
+}
+
+.seeVideo {
+  position: absolute;
   border: 1px solid rgb(124, 120, 120);
   padding: 0.5em;
   margin: 0.5em 0.5em 0.5em 3.5em;
@@ -469,12 +472,75 @@ body {
   background-color: #141414;
 }
 
-#seeVideo:hover {
+.seeVideo:hover {
   color: #c8a461;
   background-color: black;
   border: 1px solid #c8a461;
 }
 
-#seeVideoText {
+.seeVideoText {
   margin-left: 1em;
+}
+
+#selectionHeader {
+  font-size: 2.5em;
+  padding-left: 3.1em;
+  font-weight: bold;
+  margin-bottom: 0;
+  background-color: #f9f9f9;
+}
+
+#selectionArea {
+  border: solid yellow;
+  height: 600px;
+  width: 100%;
+  margin: 0 auto 0 auto;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.selection {
+  border: solid blue;
+  display: flex;
+  height: 61%;
+  width: 81%;
+  margin: auto;
+}
+
+.selectionDetails {
+  border: solid red;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.selectionReleaseDate {
+  font-size: 0.8em;
+}
+
+.selectionMovieTitle {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.selectionDirector {
+  color: #919191;
+}
+
+.selectionVideoDiv {
+  border: solid green;
+  width: 60%;
+}
+
+.selectionVideo {
+  width: 100%;
+  max-height: 100%;
+}
+
+#selectionVideoButton1 {
+  right: 15em;
+  top: 25em;
 }
