@@ -507,6 +507,10 @@ body {
   height: 61%;
   width: 81%;
   margin: auto;
+  position: absolute;
+  top: 0;
+  left: 7.5em;
+  transition: 0.5s;
 }
 
 .selectionDetails {
@@ -541,6 +545,53 @@ body {
 }
 
 #selectionVideoButton1 {
-  right: 15em;
+  right: 5em;
+  top: 24em;
+}
+
+#selectionVideoButton2 {
+  right: 5em;
+  top: 24em;
+}
+
+#selectionVideoButton3 {
+  right: 5em;
+  top: 24em;
+}
+
+#selectionVideoButton4 {
+  right: 5em;
+  top: 24em;
+}
+
+#selection1 {
+  opacity: 1;
+  z-index: 1;
+}
+
+#selection2 {
+  opacity: 0;
+  z-index: -1;
+}
+
+#selection3 {
+  opacity: 0;
+  z-index: -1;
+}
+
+#selection4 {
+  opacity: 0;
+  z-index: -1;
+}
+
+#selectionList {
+  position: absolute;
   top: 25em;
+  left: 3em;
+}
+
+.selectionItem {
+  display: inline;
+  margin: 2em;
+  border: solid black;
 }

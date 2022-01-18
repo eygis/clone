@@ -16,13 +16,13 @@ import mushrooms from '/src/pictures/mushrooms.jpg'
 
 const App = () => {
     
-    const [previousTab, setTab] = useState('pictureText1')
+    const [previousTab, setTab] = useState('pictureText1');
 
     let accordionFunction = (picture, pictureText) => {
         document.getElementsByClassName('openTab')[0].classList.remove('openTab');
         document.getElementById(picture).classList.add('openTab');
         setTimeout(()=>{document.getElementById(pictureText).style.bottom='-1em'}, 275);
-        if (pictureText==previousTab) return
+        if (pictureText==previousTab) return;
         document.getElementById(previousTab).style.bottom='-5em';
         setTab(pictureText);
     }
@@ -52,6 +52,18 @@ const App = () => {
         document.getElementById(button).style.display = 'none'
         selectedVideo.play();
         selectedVideo.controls = true;
+    }
+
+    const [previousVideo, setVideo] = useState('selection1');
+
+    let videoChange = (video) => {
+        let selectedVideo = document.getElementById(video);
+        if (selectedVideo === previousVideo) return
+        document.getElementById(previousVideo).style['z-index'] = -1;
+        document.getElementById(previousVideo).style.opacity = 0;
+        selectedVideo.style['z-index'] = 1;
+        selectedVideo.style.opacity = 1
+        setVideo(video);
     }
     
     return (
@@ -202,6 +214,45 @@ const App = () => {
                 <a id='selectionVideoButton1' className='seeVideo' onClick={()=>videoClick('selectionVideo1', 'selectionVideoButton1')}><span className='fas fa-play'></span><span className='seeVideoText'>SEE THE VIDÉO</span></a>
                 </div>
             </div>
+            <div className='selection' id='selection2'>
+                <div className='selectionDetails'>
+                    <span className='selectionReleaseDate'>RELEASED ON : 01.25.2022</span>
+                    <span className='selectionMovieTitle'>ON MONDO</span>
+                    <span className='selectionDirector'>Laura VANDAL</span>
+                </div>
+                <div className='selectionVideoDiv'>
+                <video id='selectionVideo2' className='selectionVideo' poster={forest} playsInline="" controlsList="nodownload" disablePictureInPicture={true}><source src="https://cdn.videvo.net/videvo_files/video/free/2020-08/large_watermarked/Sunsat___8_1596540777_preview.mp4" type="video/mp4" /></video>
+                <a id='selectionVideoButton2' className='seeVideo' onClick={()=>videoClick('selectionVideo2', 'selectionVideoButton2')}><span className='fas fa-play'></span><span className='seeVideoText'>SEE THE VIDÉO</span></a>
+                </div>
+            </div>
+            <div className='selection' id='selection3'>
+                <div className='selectionDetails'>
+                    <span className='selectionReleaseDate'>RELEASED ON : 01.04.2022</span>
+                    <span className='selectionMovieTitle'>MESSY FRIENDS AND ME</span>
+                    <span className='selectionDirector'>Yohan MANCA</span>
+                </div>
+                <div className='selectionVideoDiv'>
+                <video id='selectionVideo3' className='selectionVideo' poster={uke} playsInline="" controlsList="nodownload" disablePictureInPicture={true}><source src="https://cdn.videvo.net/videvo_files/video/free/2014-08/large_watermarked/Earth_Zoom_In_preview.mp4" type="video/mp4" /></video>
+                <a id='selectionVideoButton3' className='seeVideo' onClick={()=>videoClick('selectionVideo3', 'selectionVideoButton3')}><span className='fas fa-play'></span><span className='seeVideoText'>SEE THE VIDÉO</span></a>
+                </div>
+            </div>
+            <div className='selection' id='selection4'>
+                <div className='selectionDetails'>
+                    <span className='selectionReleaseDate'>RELEASED ON : 01.11.2022</span>
+                    <span className='selectionMovieTitle'>PANE JAR CHARLOTTE</span>
+                    <span className='selectionDirector'>Charlotte GAINSBOURG</span>
+                </div>
+                <div className='selectionVideoDiv'>
+                <video id='selectionVideo4' className='selectionVideo' poster={mushrooms} playsInline="" controlsList="nodownload" disablePictureInPicture={true}><source src="https://cdn.videvo.net/videvo_files/video/free/2015-03/large_watermarked/fire_background_loop2_videvo2_preview.mp4" type="video/mp4" /></video>
+                <a id='selectionVideoButton4' className='seeVideo' onClick={()=>videoClick('selectionVideo4', 'selectionVideoButton4')}><span className='fas fa-play'></span><span className='seeVideoText'>SEE THE VIDÉO</span></a>
+                </div>
+            </div>
+            <ul id='selectionList'>
+                <li className='selectionItem' onClick={()=>videoChange('selection1')}>placeholder one</li>
+                <li className='selectionItem' onClick={()=>videoChange('selection2')}>placeholder two</li>
+                <li className='selectionItem' onClick={()=>videoChange('selection3')}>placeholder three</li>
+                <li className='selectionItem' onClick={()=>videoChange('selection4')}>placeholder four</li>
+            </ul>
             </div>
         </div>
     );
