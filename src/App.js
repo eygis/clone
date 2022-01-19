@@ -200,9 +200,8 @@ const App = () => {
                     </div>
                 </div>
             </div>
-
-            <p id='selectionHeader'>HIGHLIGHT ON THE OFFICIAL SELECTION</p>
             <div id='selectionArea'>
+            <p id='selectionHeader'>HIGHLIGHT ON THE OFFICIAL SELECTION</p>
             <div className='selection' id='selection1'>
                 <div className='selectionDetails'>
                     <span className='selectionReleaseDate'>RELEASED ON : 01.18.2022</span>
