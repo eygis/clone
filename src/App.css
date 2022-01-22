@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: -10em;
   font-family: "Nunito Sans", sans-serif;
 }
 
@@ -19,7 +19,7 @@ body {
   text-align: center;
 }
 
-#logo {
+.logo {
   height: 4em;
   width: 8em;
   border: 3px solid #c8a461;
@@ -470,6 +470,8 @@ body {
   font-weight: bold;
   font-size: 0.8em;
   background-color: #141414;
+  right: 3em;
+  top: 28em;
 }
 
 .seeVideo:hover {
@@ -486,35 +488,32 @@ body {
   font-size: 2.5em;
   padding-left: 3.1em;
   font-weight: bold;
-  margin-bottom: 0;
   background-color: #f9f9f9;
-  display: inline;
+  margin-top: -0.9em;
 }
 
 #selectionArea {
-  border: solid yellow;
-  height: 750px;
+  height: 800px;
   width: 100%;
   margin: 7em auto 0 auto;
+  padding-top: 5em;
   position: relative;
   box-sizing: border-box;
   background-color: #f9f9f9;
 }
 
 .selection {
-  border: solid blue;
   display: flex;
   height: 51%;
   width: 81%;
   margin: auto;
   position: absolute;
-  top: 7em;
-  left: 7.5em;
+  top: 12em;
+  left: 9em;
   transition: 0.75s;
 }
 
 .selectionDetails {
-  border: solid red;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -535,33 +534,12 @@ body {
 }
 
 .selectionVideoDiv {
-  border: solid green;
   width: 60%;
 }
 
 .selectionVideo {
   width: 100%;
   max-height: 100%;
-}
-
-#selectionVideoButton1 {
-  right: 5em;
-  top: 25.5em;
-}
-
-#selectionVideoButton2 {
-  right: 5em;
-  top: 25.5em;
-}
-
-#selectionVideoButton3 {
-  right: 5em;
-  top: 25.5em;
-}
-
-#selectionVideoButton4 {
-  right: 5em;
-  top: 25.5em;
 }
 
 #selection1 {
@@ -585,13 +563,151 @@ body {
 }
 
 #selectionList {
-  position: absolute;
-  top: 32em;
-  left: 3em;
+  position: relative;
+  top: 28em;
+  left: 3.5em;
+  max-width: 90%;
+  height: 12em;
 }
 
 .selectionItem {
   display: inline;
   margin: 2em;
   border: solid black;
+  position: absolute;
+  transition: 0.5s;
+  height: 117px;
+}
+
+.selectionTile {
+  max-width: 10.96em;
+}
+
+#selectionItem1 {
+  z-index: 1;
+}
+
+#selectionItem2 {
+  left: 21em;
+}
+
+#selectionItem3 {
+  left: 40em;
+}
+
+#selectionItem4 {
+  left: 59em;
+}
+
+#selectionItem2.holdLeft {
+  left: 2.5em;
+}
+
+#selectionItem3.holdLeft {
+  left: 2.5em;
+}
+
+#selectionItem4.holdLeft {
+  left: 2.5em;
+}
+
+.selectionBorder {
+  border: solid #c8a461;
+}
+
+#stickyYear {
+  position: sticky;
+  top: 10em;
+  width: 10%;
+  padding-left: 3.5em;
+  font-weight: bold;
+  color: #919191;
+}
+
+#scrollArea {
+  display: flex;
+}
+
+#scrollPhotoArea {
+  width: 40%;
+}
+
+.scrollPhotoDiv {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.scrollPhotoDiv:nth-child(1) {
+  z-index: 2;
+}
+
+.scrollPhotoDiv:nth-child(2) {
+  z-index: 1;
+  transform: rotate(5deg);
+}
+
+.scrollPhotoDiv:nth-child(3) {
+  z-index: 0;
+  transform: rotate(-5deg);
+}
+
+.scrollPhoto {
+  max-width: 500px;
+}
+
+#scrollInfoWrapper {
+  width: 60%;
+}
+
+#scrollInfoArea {
+  position: sticky;
+  top: 0;
+  padding-left: 1em;
+}
+
+#scrollInfoHeader {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+#scrollInfoHeaderSubtext {
+  margin-top: -1em;
+  color: #919191;
+}
+
+.scrollInfoRow {
+  display: flex;
+}
+
+.scrollInfoBox {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin-right: 2.3em;
+}
+
+.scrollInfoNumber {
+  color: #e1e1e1;
+}
+
+.number {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.scrollInfoGold {
+  margin-top: -1em;
+  margin-bottom: 1.5em;
+  color: #c8a461;
+  font-weight: bold;
+}
+
+#scrollInfoLogoRow {
+  width: 12em;
+  margin-top: -2.5em;
+  margin-left: -2.5em;
 }

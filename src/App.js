@@ -30,21 +30,61 @@ const App = () => {
     
     useEffect(() => { 
     const images = document.querySelectorAll('.showOnScroll');
-    const options = {
+    const options1 = {
         threshold: .75
     }
-    const observer = new IntersectionObserver(entries => {
+    const observer1 = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
             entry.target.classList.add('isVisible')
-            //IntersectionObserver.unobserve(entry);
             }
         })
-    }, options)
+    }, options1)
     
     images.forEach(image => {
-    observer.observe(image);
+    observer1.observe(image);
     });
+
+    const selectionTiles = document.querySelectorAll('.holdLeft');
+    const options2 = {
+        threshold: 1
+    }
+    const observer2 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('holdLeft')
+            }
+        })
+    }, options2)
+
+    selectionTiles.forEach(tile => {
+        observer2.observe(tile);
+    });
+
+    const scrollPhotos = document.querySelectorAll('.scrollPhotoDiv');
+
+    let scrollFade = (element) => {
+        if (element) {
+            let topDistance = window.pageYOffset + element.getBoundingClientRect().top;
+            let elementHeight = element.offsetHeight;
+            let scrollTop = document.documentElement.scrollTop;
+            let opacity = 1;
+            if (scrollTop > topDistance) {
+                opacity = 1 - (scrollTop - topDistance) / elementHeight;
+            }
+            if (opacity >= 0) {
+                element.style.opacity = opacity;
+            }
+        }
+    }
+
+    let scrollHandler = () => {
+        scrollPhotos.forEach(photo => {
+            scrollFade(photo)
+        })
+    }
+
+    window.addEventListener('scroll', scrollHandler);
 });
 
     let videoClick = (video, button) => {
@@ -55,14 +95,20 @@ const App = () => {
     }
 
     const [previousVideo, setVideo] = useState('selection1');
+    const [previousSelectionItem, setSelectionItem] = useState('selectionItem1')
 
-    let videoChange = (video) => {
+    let videoChange = (video, selectionItem) => {
         let selectedVideo = document.getElementById(video);
+        let selectedSelectionItem = document.getElementById(selectionItem);
         if (selectedVideo === previousVideo) return
+        if (selectedSelectionItem === previousSelectionItem) return
+        document.getElementById(previousSelectionItem).classList.remove('selectionBorder');
         document.getElementById(previousVideo).style['z-index'] = -1;
         document.getElementById(previousVideo).style.opacity = 0;
+        selectedSelectionItem.classList.add('selectionBorder');
         selectedVideo.style['z-index'] = 1;
         selectedVideo.style.opacity = 1
+        setSelectionItem(selectionItem);
         setVideo(video);
     }
     
@@ -71,7 +117,7 @@ const App = () => {
          <div id='headerArea'>
              <div id='topArea'>
              <div id='logoArea'>
-            <p id='logo' />
+            <p className='logo' />
             <h3 id='topText' className='logoText'>FESTIVAL DE BUI</h3>
             <h5 id='bottomText' className='logoText'>April 3, 2022</h5>
              </div>
@@ -201,6 +247,7 @@ const App = () => {
                 </div>
             </div>
             <div id='selectionArea'>
+            <div id='stickyYear'>2022</div>
             <p id='selectionHeader'>HIGHLIGHT ON THE OFFICIAL SELECTION</p>
             <div className='selection' id='selection1'>
                 <div className='selectionDetails'>
@@ -247,11 +294,53 @@ const App = () => {
                 </div>
             </div>
             <ul id='selectionList'>
-                <li className='selectionItem' onClick={()=>videoChange('selection1')}>placeholder one</li>
-                <li className='selectionItem' onClick={()=>videoChange('selection2')}>placeholder two</li>
-                <li className='selectionItem' onClick={()=>videoChange('selection3')}>placeholder three</li>
-                <li className='selectionItem' onClick={()=>videoChange('selection4')}>placeholder four</li>
+                <li className='selectionItem holdLeft selectionBorder' id='selectionItem1' onClick={()=>videoChange('selection1', 'selectionItem1')}><img className='selectionTile' src={computer} /></li>
+                <li className='selectionItem holdLeft' id='selectionItem2' onClick={()=>videoChange('selection2', 'selectionItem2')}><img className='selectionTile' src={forest} /></li>
+                <li className='selectionItem holdLeft' id='selectionItem3' onClick={()=>videoChange('selection3', 'selectionItem3')}><img className='selectionTile' src={uke} /></li>
+                <li className='selectionItem holdLeft' id='selectionItem4' onClick={()=>videoChange('selection4', 'selectionItem4')}><img className='selectionTile' src={mushrooms} /></li>
             </ul>
+            </div>
+            <div id="scrollArea">
+            <div id='scrollPhotoArea'>
+                <div className='scrollPhotoDiv'><img className='scrollPhoto' src={mushrooms} /></div>
+                <div className='scrollPhotoDiv'><img className='scrollPhoto' src={forest} /></div>
+                <div className='scrollPhotoDiv'><img className='scrollPhoto' src={uke} /></div>
+            </div>
+            <div id='scrollInfoWrapper'>
+                <div id='scrollInfoArea'>
+                <p id='scrollInfoHeader'>Because greater than all, the Festival...</p>
+                <p id='scrollInfoHeaderSubtext'>finds and displays mid quality films that improve the growth of film, promotes the growth of the local film industry and celebrates the 6th art citywide.</p>
+                <div className='scrollInfoRow'>
+                    <div className='scrollInfoBox'>
+                        <div className='scrollInfoNumber'><span className='number'>73</span> years</div>
+                        <div className='scrollInfoGold'>OF FINDING NEW FILMS</div>
+                    </div>
+                    <div className='scrollInfoBox'>
+                        <div className='scrollInfoNumber'><span className='number'>11</span> days</div>
+                        <div className='scrollInfoGold'>OF CITY PREMIER SCREENINGS</div>
+                    </div>
+                </div>
+                <div className='scrollInfoRow'>
+                    <div className='scrollInfoBox'>
+                        <div className='scrollInfoNumber'><span className='number'>169</span> countries</div>
+                        <div className='scrollInfoGold'>REPRESENTED IN 2018 BY 39,999 DISCREDITED FESTIVAL-ATTENDERS</div>
+                    </div>
+                    <div className='scrollInfoBox'>
+                        <div className='scrollInfoNumber'><span className='number'>12499</span> Movie Amateurs</div>
+                        <div className='scrollInfoGold'>ASSEMBLED AT THE MARSH DU FILM</div>
+                    </div>
+                </div>
+                <div className='scrollInfoRow'>
+                    <div className='scrollInfoBox'>
+                        <div className='scrollInfoNumber'><span className='number'>23</span> blue concrete steps</div>
+                        <div className='scrollInfoGold'>TO GREET THE CREME DE LA CREME IN THE FILM INDUSTRY</div>
+                    </div>
+                </div>
+                <div id="scrollInfoLogoRow">
+                    <p className='logo' />
+                </div>
+            </div>
+            </div>
             </div>
         </div>
     );
