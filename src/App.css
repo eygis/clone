@@ -639,6 +639,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-bottom: 0.2em;
 }
 
 .scrollPhotoDiv:nth-child(1) {
@@ -710,4 +711,36 @@ body {
   width: 12em;
   margin-top: -2.5em;
   margin-left: -2.5em;
+}
+
+#scrollingYearArea {
+  position: relative;
+  background-color: white;
+}
+
+#scrollingYearDiv {
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  color: black;
+  position: sticky;
+  top: 10em;
+}
+
+#scrollingYear1 {
+  font-size: 9em;
+  font-weight: bold;
+  top: 0;
+  left: 3.5em;
+}
+
+#scalingPictureArea {
+  border: solid blue;
+  text-align: center;
+  max-width: 90%;
+  margin: auto;
+}
+
+#scalingPicture {
+  max-width: 100%;
 }

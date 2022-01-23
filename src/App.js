@@ -13,6 +13,7 @@ import computer from '/src/pictures/computer.jpg'
 import uke from '/src/pictures/uke.jpg'
 import forest from '/src/pictures/forest.jpg'
 import mushrooms from '/src/pictures/mushrooms.jpg'
+import flower from '/src/pictures/flower.jpg'
 
 const App = () => {
     
@@ -85,6 +86,29 @@ const App = () => {
     }
 
     window.addEventListener('scroll', scrollHandler);
+
+    const scalePhoto = document.querySelector('#scalingPictureArea');
+
+    let scrollScale = (element) => {
+        if (element) {
+            let topDistance = window.pageYOffset + element.getBoundingClientRect().top;
+            let elementHeight = element.offsetHeight;
+            let scrollTop = document.documentElement.scrollTop;
+            let scale = 1;
+            if (scrollTop < topDistance) {
+                scale = 1 + (scrollTop - topDistance) / elementHeight;
+            }
+            if (scale >= .5) {
+                element.style.transform = `scale(${scale})`;
+            }
+        }
+    }
+
+    let scaleHandler = () => {
+        scrollScale(scalePhoto)
+    }
+
+    window.addEventListener('scroll', scaleHandler);
 });
 
     let videoClick = (video, button) => {
@@ -341,6 +365,14 @@ const App = () => {
                 </div>
             </div>
             </div>
+            </div>
+            <div id='scrollingYearArea'>
+                <div id='scrollingYearDiv'>
+                    <span id='scrollingYear1'>2021</span>
+                </div>
+                <div id='scalingPictureArea'>
+                    <img id='scalingPicture' src={flower} />
+                </div>
             </div>
         </div>
     );
