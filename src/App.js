@@ -32,7 +32,7 @@ const App = () => {
     useEffect(() => { 
     const images = document.querySelectorAll('.showOnScroll');
     const options1 = {
-        threshold: .75
+        threshold: .85
     }
     const observer1 = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -92,13 +92,13 @@ const App = () => {
     let scrollScale = (element) => {
         if (element) {
             let topDistance = window.pageYOffset + element.getBoundingClientRect().top;
-            let elementHeight = element.offsetHeight;
+            let elementHeight = element.offsetHeight + 400;
             let scrollTop = document.documentElement.scrollTop;
             let scale = 1;
             if (scrollTop < topDistance) {
                 scale = 1 + (scrollTop - topDistance) / elementHeight;
             }
-            if (scale >= .5) {
+            if (scale >= .3) {
                 element.style.transform = `scale(${scale})`;
             }
         }
@@ -222,8 +222,8 @@ const App = () => {
                  </ul>
              </div>
          </div>
-            <p id='articleHeader'>ALL THE LATEST NEWS</p>
             <div id='articleArea'>
+            <p id='articleHeader'>ALL THE LATEST NEWS</p>
             <div className='article showOnScroll' id='article1'>
             <div className='articlePictureDiv'><img className='articlePicture' src={phone} /></div>
             <p className='articleText classification'><span className='goldType'>OFFICIAL RELEASE</span><span className='date'>12.17.2021</span></p>
@@ -332,7 +332,7 @@ const App = () => {
             </div>
             <div id='scrollInfoWrapper'>
                 <div id='scrollInfoArea'>
-                <p id='scrollInfoHeader'>Because greater than all, the Festival...</p>
+                <p id='scrollInfoHeader'>Because more than anything, the festival...</p>
                 <p id='scrollInfoHeaderSubtext'>finds and displays mid quality films that improve the growth of film, promotes the growth of the local film industry and celebrates the 6th art citywide.</p>
                 <div className='scrollInfoRow'>
                     <div className='scrollInfoBox'>
@@ -368,10 +368,32 @@ const App = () => {
             </div>
             <div id='scrollingYearArea'>
                 <div id='scrollingYearDiv'>
-                    <span id='scrollingYear1'>2021</span>
+                    <span id='scrollingYear'>2021</span>
                 </div>
                 <div id='scalingPictureArea'>
                     <img id='scalingPicture' src={flower} />
+                    <a id='scalingPictureButton'><span>SEE THE HIGHLIGHTS</span></a>
+                </div>
+            </div>
+            <div id='lastArea'>
+                <p id='lastAreaHeader' className='lastAreaText'>
+                    Visit our Xanga for the latest news from the Festival de Bui
+                </p>
+                <div id='emailInputDiv'>
+                <input id='emailInput' type='text' placeholder='Enter Your AIM SN'></input><span id='emailArrow' className='fas fa-angle-right' />
+                </div>
+                <p className='lastAreaText'>Stay far from Festival de Bui</p>
+                <p className='lastAreaText'>Follow us on <a>Xanga</a>, <a>Friendster</a>, and <a>AIM</a></p>
+                <p className='lastAreaText'>Download the <a>Free Bui Background</a></p>
+                <div id='footer'>
+                    <ul id='footerList'>
+                        <li class='footerLink'>Credit</li>
+                        <li class='footerLink'>Contacts</li>
+                        <li class='footerLink'>SAQ</li>
+                        <li class='footerLink'>Siteatlas</li>
+                        <li class='footerLink'>Public policy</li>
+                        <li class='footerLink'>Legality</li>
+                    </ul>
                 </div>
             </div>
         </div>
